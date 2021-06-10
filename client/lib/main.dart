@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 // ignore: import_of_legacy_library_into_null_safe
-import 'package:signalr_netcore/signalr_client.dart';
+import 'package:signalr_client/signalr_client.dart';
 // ignore: import_of_legacy_library_into_null_safe
-import 'package:signalr_netcore/hub_connection_builder.dart';
+import 'package:signalr_client/hub_connection_builder.dart';
 
 void main() {
   runApp(MyApp());
@@ -130,7 +130,10 @@ class _MyHomePageState extends State<MyHomePage> {
   void initSignalR() {
     hubConnection = HubConnectionBuilder().withUrl(serverUrl).build();
     // print(hubConnection.state);
-    hubConnection.onclose(({Exception? error}) => print('Connection Closed'));
+    hubConnection.onclose((error) {
+      print('Connection closed.');
+    });
+    //hubConnection.onclose(({Exception? error}) => print('Connection Closed'));
     hubConnection.on("ReceiveNewPosition", _handleNewPosition);
   }
 

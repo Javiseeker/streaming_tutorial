@@ -54,7 +54,7 @@ namespace SignalingServer
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapHub<StreamHub>("/streamHub");
-                endpoints.MapControllers();
+                //endpoints.MapControllers();
             });
         }
     }
